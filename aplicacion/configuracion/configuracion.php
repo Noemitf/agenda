@@ -12,16 +12,16 @@ define ('CLASES', APLICACION.'/clases');
 
 define ('PUBLICA', HOME.'/publica');
 define ('CSS', PUBLICA.'/css');
-define ('IMAGENES', PUBLICA.'/imagenes');
+define ('IMAGENES', PUBLICA.'/img');
 define ('IMAGENESDATOS', IMAGENES.'/datos');
-define ('JAVASCRIPT', PUBLICA.'/javascript');
+define ('JAVASCRIPT', PUBLICA.'/js');
 
 
 
-define ('URLAPLICACION', 'http://'.$_SERVER['HTTP_HOST'].'/');
+define ('URLAPLICACION', 'http://'.$_SERVER['HTTP_HOST']);
 define ('URLCSS', URLAPLICACION.'/css');
-define ('URLIMAGENES', URLAPLICACION.'/imagenes');
+define ('URLIMAGENES', URLAPLICACION.'/img');
 define ('URLIMAGENESDATOS', URLIMAGENES.'/datos');
-define ('URLJAVASCRIPT', URLAPLICACION.'/javascript');
+define ('URLJAVASCRIPT', URLAPLICACION.'/js');
 
 ?>
