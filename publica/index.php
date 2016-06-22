@@ -1,6 +1,8 @@
 <?php
 
 require_once '../aplicacion/configuracion/configuracion.php';
+require_once CLASES.'/contacto.php';
+require_once MODELOS.'/modeloContacto.php';
 
 require VISTAS.'/pagina_principal.php';
 //require VISTAS.'/mostrar_mensajes.php';
