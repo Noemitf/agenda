@@ -1,5 +1,5 @@
 <?php
-//require_once CLASES.'/modeloContacto.php';
+require_once CLASES.'/contacto.php';
 
 class modeloContacto{
     private $servidor;
@@ -80,10 +80,10 @@ class modeloContacto{
         $baseDatos = mysql_select_db($this->get_BaseDatos(),$conexion)
             or die ("No se pudo conectar la base de datos");
         
-        $consulta = 'INSERT INTO contacto (nombre ,apellidos,direccion,telefono,email,imagen,contadorVisitas) '
-            .' VALUES ("'.addslashes($contacto->getNombre()).'","'.addslashes($contacto->getApellidos()).'","'.addslashes($contacto->getDireccion())
-            .'","'.addslashes($contacto->getTelefono()).'","'.addslashes($contacto->getEmail()).'","'.addslashes($contacto->getImagen()).'","'
-            .addslashes($contacto->getContadorVisitas()).'")';
+        $consulta = 'INSERT INTO contacto (nombre ,apellidos,direccion,telefono,email,imagen,contador_visitas) '
+            .' VALUES ("'.addslashes($contacto->get_nombre()).'","'.addslashes($contacto->get_apellidos()).'","'.addslashes($contacto->get_direccion())
+            .'","'.addslashes($contacto->get_telefono()).'","'.addslashes($contacto->get_email()).'","'.addslashes($contacto->get_imagen()).'","'
+            .addslashes($contacto->get_contador_visitas()).'")';
         
         $resultado = mysql_query($consulta)
             or die("Consulta fallida ".  mysql_error());
@@ -144,14 +144,16 @@ class modeloContacto{
         
          while ($datos=mysql_fetch_array($resultado,MYSQL_ASSOC))
         {
-            $contacto = new Contacto($datos['nombre'], $datos['apellidos']
-                , $datos['direccion'], $datos['telefono'], $datos['email'], $datos['imagen'], $datos['id'],$datos['contador_visitas']);
+            $contacto = new contacto($datos['id'],$datos['nombre'], $datos['apellidos']
+                , $datos['direccion'], $datos['telefono'], $datos['email'], $datos['imagen'], $datos['contador_visitas']);
 
             $arrayContactos[] = $contacto;
             unset ($contacto);
         }
         
         mysql_close($conexion);
+        
+        return $arrayContactos;
     }
     
     public function buscarContacto(){

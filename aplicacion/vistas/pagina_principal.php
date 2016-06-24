@@ -8,20 +8,29 @@
                 </h2>
             </header>
 
+            <?php if (isset($contactos)) { ?><!-- si existe $contactos... -->
             <article>
                 <ul>
-                    <li><img src="<?= URLIMAGENES ?>/tux01.jpg" alt="Insertar Contacto" /><p>Fernando</p></li>
-                    <li><img src="<?= URLIMAGENES ?>/tux02.jpg" alt="Insertar Contacto" /><p>Luis</p></li>
-                    <li><img src="<?= URLIMAGENES ?>/tux03.jpg" alt="Insertar Contacto" /><p>Andres</p></li>
+                    <?php for ($i=0;$i<=2;$i++){ ?>
+                        <?php if (isset($contactos[$i])){?><!-- si existen posiciones en el array $contactos... -->
+                        
+                        <li><?php $contactos[$i]?><img src="<?php URLIMAGENESDATOS?><?= $contactos[$i]->get_imagen() ?>" alt="Insertar Contacto"/><p><?= $contactos[$i]->get_nombre() ?></p></li>
+                        <?php } ?>
+                    <?php } ?>
                 </ul>
             </article>
             <article>
                 <ul>
-                    <li><img src="<?= URLIMAGENES ?>/tux04.jpg" alt="Insertar Contacto" /><p>Pedro</p></li>
-                    <li><img src="<?= URLIMAGENES ?>/tux05.jpg" alt="Insertar Contacto" /><p>Ana</p></li>
-                    <li><img src="<?= URLIMAGENES ?>/tux06.jpg" alt="Insertar Contacto" /><p>Teodoro</p></li>
+                    <?php for ($i=3;$i<=5;$i++){ ?>
+                        <?php if (isset($contactos[$i])){?>
+                            <li><?php $contactos[$i]->get_id() ?><img src="<?php URLIMAGENESDATOS?><?= $contactos[$i]->get_imagen() ?>" alt="Insertar Contacto" /><p><?= $contactos[$i]->get_nombre() ?></p></li>
+                        <?php } ?>
+                    <?php } ?>
+                 
                 </ul>
             </article>
+            
+             <?php } ?>
         </section>
         
 <?php
