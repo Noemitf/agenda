@@ -9,9 +9,10 @@
             </header>
 
             <article>
+                <?php if (isset($contacto)){?>
                 <form action="#" method="post">
                     <fieldset>
-                        <img src="<?= URLIMAGENES ?>/tux01.jpg" alt="Foto Fernando" />
+                        <img src="<?= URLIMAGENESDATOS ?><?= $contacto->get_imagen()?>" alt="Foto <?= $contacto->get_nombre()?>" />
 
                         <label for="nombre">Nombre:</label>
                         <input type="text" name="nombre" value="" placeholder="Introduce nombre" required/>
@@ -29,6 +30,7 @@
                         <input class="boton" type="submit" name="enviar" value="Enviar" />
                     </fieldset>
                 </form>
+                <?php }?>
             </article>
         </section>
         

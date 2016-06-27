@@ -40,15 +40,21 @@ class controladorContacto{
     
     public function insertarContactos(){
         $datos['contactos'] = $this->modelo->get_contacto();//['contactos'] dentro tiene un array con todos los contactos
-        $this->llamarVista('insertar_contactos', $datos);
+        $this->llamarVista('insertar_contacto', $datos);
     }
 
     public function editarContactos(){
-        
+        $contacto = new contacto();
+        $contacto->set_id($_REQUEST["id"]);
+        $datos['contacto'] = $this->modelo->buscarContacto($contacto);//['contacto'] solo llama a un contacto
+        $this->llamarVista('editar_contacto', $datos);
     }
     
     public function borrarContactos(){
-        
+        $contacto = new contacto();
+        $contacto->set_id($_REQUEST["id"]);
+        $datos['contacto'] = $this->modelo->borrarContacto($contacto);//['contacto'] solo llama a un contacto
+        $this->llamarVista('mostrar_mensajes', $datos);
     }
     
     public function listarContactos(){
@@ -57,7 +63,10 @@ class controladorContacto{
     }
     
     public function mostrarContactos(){
-        
+        $contacto = new contacto();
+        $contacto->set_id($_REQUEST["id"]);
+        $datos['contacto'] = $this->modelo->buscarContacto($contacto);//['contacto'] solo llama a un contacto
+        $this->llamarVista('mostrar_contacto', $datos);
     }
 }
 

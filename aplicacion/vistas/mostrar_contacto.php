@@ -8,20 +8,21 @@
                     Mostrar Contacto
                 </h2>
             </header>
-
+            <?php if (isset($contacto)){?>
             <article id="contacto">
                 <header>
-                    <img src="<?= URLIMAGENES ?>/tux01.jpg" alt="Foto" />
+                    <img src="<?= URLIMAGENESDATOS ?><?= $contacto->get_imagen()?>" alt="Foto" />
                 </header>
                 <ul>
-                    <li><span>Nombre:</span>Fernando</li>
-                    <li><span>Apellidos:</span>García García</li>
-                    <li><span>Dirección:</span>C\ Valdes Pedrita 12 - 1º A</li>
-                    <li><span>Teléfono:</span>985786543</li>
-                    <li><span>Email:</span>fernando.garcia@gmail.com</li>
+                    <li><span>Nombre:</span><?= $contacto->get_nombre()?></li>
+                    <li><span>Apellidos:</span><?= $contacto->get_apellidos()?></li>
+                    <li><span>Dirección:</span><?= $contacto->get_direccion()?></li>
+                    <li><span>Teléfono:</span><?= $contacto->get_telefono()?></li>
+                    <li><span>Email:</span><?= $contacto->get_email()?></li>
                 </ul>
                 <img src="<?= URLIMAGENES ?>/mapa.jpg" src="mapa" />
             </article>
+            <?php }?>
         </section>
 
 <?php

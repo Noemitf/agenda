@@ -93,14 +93,14 @@ class modeloContacto{
         
     }
     
-    public function borrarContacto(){
+    public function borrarContacto($contacto){
         $conexion = mysql_connect($this->get_servidor(),$this->get_usuario(),$this->get_clave(),$this->get_BaseDatos())
                 or die("No se pudo conectar a la base de datos");
         
         $baseDatos = mysql_select_db($this->get_BaseDatos(),$conexion)
             or die ("No se pudo conectar la base de datos");
         
-        $consulta='DELETE FROM contacto WHERE id="' . $contacto->getId() .'"';
+        $consulta='DELETE FROM contacto WHERE id="' . $contacto->get_id() .'"';
         
         $resultado = mysql_query($consulta)
             or die("Consulta fallida ".  mysql_error());
@@ -156,7 +156,7 @@ class modeloContacto{
         return $arrayContactos;
     }
     
-    public function buscarContacto(){
+    public function buscarContacto($contacto){
         $conexion = mysql_connect($this->get_servidor(),$this->get_usuario(),$this->get_clave(),$this->get_BaseDatos())
                 or die("No se pudo conectar a la base de datos");
         
@@ -168,8 +168,10 @@ class modeloContacto{
         $resultado = mysql_query($consulta) or die ("Consulta fallida: ".mysql_error());
         
         if($datos=mysql_fetch_array($resultado, MYSQL_ASSOC)){
-            $contacto_resultado = new Contacto($datos['nombre'],$datos['apellidos'],$datos['direccion'],$datos['telefono'],$datos['email'],$datos['imagen'],$datos['contadorVisitas']);
+            $contacto_resultado = new Contacto($datos['id'],$datos['nombre'],$datos['apellidos'],$datos['direccion'],$datos['telefono'],$datos['email'],$datos['imagen'],$datos['contador_visitas']);
         }
+        
+        return $contacto_resultado;
         
         mysql_close($conexion);
     }
