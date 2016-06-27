@@ -19,27 +19,18 @@
                         <th></th>
                     </thead>
                     <tbody>
+                        <?php for($i=0;$i<=2;$i++){?>
+                        <?php if (isset($contactos[$i])){?>
                         <tr>
-                            <td><img src="<?= URLIMAGENES ?>/tux01.jpg" alt="Foto Fernando" /></td>
-                            <td>Fernando</td>
-                            <td><a href="#"><img class="accion" src="<?= URLIMAGENES ?>/view.png" alt="Ver" /></a></td>
-                            <td><a href="#"><img class="accion" src="<?= URLIMAGENES ?>/edit.png" alt="Editar" /></a></td>
-                            <td><a href="#"><img class="accion" src="<?= URLIMAGENES ?>/delete.png" alt="Borrar" /></a></td>
+                            <?php $contactos[$i]->get_id()?>
+                            <td><img src="<?= URLIMAGENESDATOS ?><?= $contactos[$i]->get_imagen()?>" alt="Foto <?= $contactos[$i]->get_nombre()?>" /></td>
+                            <td><?= $contactos[$i]->get_nombre()?></td>
+                            <td><a href="<?= URLAPLICACION.'/index.php?accion=mostrar'?>"><img class="accion" src="<?= URLIMAGENES ?>/view.png" alt="Ver" /></a></td>
+                            <td><a href="<?= URLAPLICACION.'/index.php?accion=editar'?>"><img class="accion" src="<?= URLIMAGENES ?>/edit.png" alt="Editar" /></a></td>
+                            <td><a href="<?= URLAPLICACION.'/index.php?accion=borrar'?>"><img class="accion" src="<?= URLIMAGENES ?>/delete.png" alt="Borrar" /></a></td>
                         </tr>
-                        <tr>
-                            <td><img src="<?= URLIMAGENES ?>/tux02.jpg" alt="Foto Luis" /></td>
-                            <td>Luis</td>
-                            <td><a href="#"><img class="accion" src="<?= URLIMAGENES ?>/view.png" alt="Ver" /></a></td>
-                            <td><a href="#"><img class="accion" src="<?= URLIMAGENES ?>/edit.png" alt="Editar" /></a></td>
-                            <td><a href="#"><img class="accion" src="<?= URLIMAGENES ?>/delete.png" alt="Borrar" /></a></td>
-                        </tr>
-                        <tr>
-                            <td><img src="<?= URLIMAGENES ?>/tux03.jpg" alt="Foto Andres" /></td>
-                            <td>Andres</td>
-                            <td><a href="#"><img class="accion" src="<?= URLIMAGENES ?>/view.png" alt="Ver" /></a></td>
-                            <td><a href="#"><img class="accion" src="<?= URLIMAGENES ?>/edit.png" alt="Editar" /></a></td>
-                            <td><a href="#"><img class="accion" src="<?= URLIMAGENES ?>/delete.png" alt="Borrar" /></a></td>
-                        </tr>
+                        <?php }?>
+                        <?php }?>
                         
                     </tbody>
                 </table>

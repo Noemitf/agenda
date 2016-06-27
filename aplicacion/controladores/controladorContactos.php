@@ -39,7 +39,8 @@ class controladorContacto{
     }
     
     public function insertarContactos(){
-        
+        $datos['contactos'] = $this->modelo->get_contacto();//['contactos'] dentro tiene un array con todos los contactos
+        $this->llamarVista('insertar_contactos', $datos);
     }
 
     public function editarContactos(){
