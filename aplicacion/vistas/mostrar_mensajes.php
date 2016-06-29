@@ -9,7 +9,9 @@
             </header>
 
             <article>
-                <p id="mensaje">Contacto Insertado</p>
+               
+                <p id="mensaje"><?= $mensaje ?></p>
+          
             </article>
         </section>
 

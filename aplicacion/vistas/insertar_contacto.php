@@ -10,7 +10,7 @@
             </header>
 
             <article>
-                <form action="#" method="post">
+                <form action="" method="post">
                     <fieldset>
                         <label for="nombre">Nombre:</label>
                         <input type="text" name="nombre" value="" placeholder="Introduce nombre" required/>
@@ -24,7 +24,7 @@
                         <input type="email" name="email" value="" placeholder="Introduce email" required/>
                         <label for="imagen">Imagen:</label>
                         <input type="file" name="fichero" value="" />
-                        <input class="boton" type="submit" name="enviar" value="Enviar" />
+                        <input class="boton" type="submit" name="enviar" value="Enviar"/>
                     </fieldset>
                 </form>
             </article>

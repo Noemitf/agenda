@@ -20,8 +20,16 @@ class controladorContacto{
         ob_end_flush();
     }
     
-    public function uploadFoto(){
-        
+    private function uploadFoto(){
+        if($_FILES['fichero']['name']){
+            if(!$_FILES['fichero']['error']){
+                $nuevo_nombre = md5($_FILES['fichero']['tmp_name']);
+                move_uploaded_file($_FILES['fichero']['tmp_name'], IMAGENESDATOS."/".$nuevo_nombre);
+            }
+        }else{
+            $nuevo_nombre = "foto.png";
+        }
+        return $nuevo_nombre;
     }
     
     public function paginaPrincipal(){
@@ -31,29 +39,47 @@ class controladorContacto{
     }
     
     public function formularioInsertarContacto(){
-        
-    }
-    
-    public function formularioEditarContacto(){
-        
-    }
-    
-    public function insertarContactos(){
         $datos['contactos'] = $this->modelo->get_contacto();//['contactos'] dentro tiene un array con todos los contactos
         $this->llamarVista('insertar_contacto', $datos);
     }
-
-    public function editarContactos(){
+    
+    public function formularioEditarContacto(){
         $contacto = new contacto();
         $contacto->set_id($_REQUEST["id"]);
         $datos['contacto'] = $this->modelo->buscarContacto($contacto);//['contacto'] solo llama a un contacto
         $this->llamarVista('editar_contacto', $datos);
     }
     
+    public function insertarContactos(){
+        $contacto = new contacto();
+        $contacto->set_id($_REQUEST["id"]);
+        $contacto->set_nombre($_REQUEST["nombre"]);
+        $contacto->set_apellidos($_REQUEST["apellidos"]);
+        $contacto->set_direccion($REQUEST["direccion"]);
+        $contacto->set_telefono($_REQUEST["telefono"]);
+        $contacto->set_email($_REQUEST["email"]);
+        $contacto->set_imagen($this->uploadFoto());
+        $this->modelo->insertarContacto($contacto);
+        $datos['mensaje']="Contacto insertado";
+        $this->llamarVista('mostrar_mensajes', $datos);
+    }
+
+    public function editarContactos(){
+        if(!empty($_FILES['fichero']['name'])){
+            // Borrar imagen
+            if(strcmp($_REQUEST['imagen'], "foto.png")!=0)
+                unlink (IMAGENESDATOS."/".$_REQUEST['imagen']);
+            $contacto->set_imagen($this->uploadFoto());
+        }else{
+            $contacto->set_imagen($_REQUEST['imagen']);
+        }
+    }
+    
     public function borrarContactos(){
         $contacto = new contacto();
         $contacto->set_id($_REQUEST["id"]);
-        $datos['contacto'] = $this->modelo->borrarContacto($contacto);//['contacto'] solo llama a un contacto
+        $this->modelo->borrarContacto($contacto);//['contacto'] solo llama a un contacto
+        $datos['mensaje']="Contacto borrado";
         $this->llamarVista('mostrar_mensajes', $datos);
     }
     
