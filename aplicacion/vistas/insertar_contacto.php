@@ -10,7 +10,7 @@
             </header>
 
             <article>
-                <form action="" method="post">
+                <form enctype="multipart/form-data" action="<?= URLAPLICACION.'/index.php?accion=insertar'?>" method="post">
                     <fieldset>
                         <label for="nombre">Nombre:</label>
                         <input type="text" name="nombre" value="" placeholder="Introduce nombre" required/>

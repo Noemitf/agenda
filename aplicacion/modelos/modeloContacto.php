@@ -115,14 +115,14 @@ class modeloContacto{
         $baseDatos = mysql_select_db($this->get_BaseDatos(),$conexion)
             or die ("No se pudo conectar la base de datos");
         
-        $consulta= 'UPDATE contacto SET nombre ="'. addslashes($contacto->getNombre())
-            .'", apellidos = "'.addslashes($contacto->getApellidos())
-            .'", direccion = "'.addslashes($contacto->getDireccion())
-            .'", telefono = "'.addslashes($contacto->getTelefono())
-            .'", email = "'.addslashes($contacto->getEmail())
-            .'", imagen = "'.addslashes($contacto->getImagen())
-            .'", contador_visitas ="'.addslashes($contacto->getContadorVisitas())
-        .'" WHERE id= '. $contacto->getId();
+        $consulta= 'UPDATE contacto SET nombre ="'. addslashes($contacto->get_nombre())
+            .'", apellidos = "'.addslashes($contacto->get_apellidos())
+            .'", direccion = "'.addslashes($contacto->get_direccion())
+            .'", telefono = "'.addslashes($contacto->get_telefono())
+            .'", email = "'.addslashes($contacto->get_email())
+            .'", imagen = "'.addslashes($contacto->get_imagen())
+            .'", contador_visitas ="'.addslashes($contacto->get_contadorVisitas())
+        .'" WHERE id= '. $contacto->get_id();
         
         $resultado = mysql_query($consulta)
             or die("Consulta fallida ".  mysql_error());

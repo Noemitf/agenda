@@ -10,22 +10,24 @@
 
             <article>
                 <?php if (isset($contacto)){?>
-                <form action="#" method="post">
+                <form enctype="multipart/form-data" action="<?= URLAPLICACION.'/index.php?accion=editar'?>" method="post">
                     <fieldset>
-                        <img src="<?= URLIMAGENESDATOS ?><?= $contacto->get_imagen()?>" alt="Foto <?= $contacto->get_nombre()?>" />
+                        <img src="<?= URLIMAGENESDATOS ?>/<?= $contacto->get_imagen()?>" alt="Foto <?= $contacto->get_nombre()?>" />
 
                         <label for="nombre">Nombre:</label>
-                        <input type="text" name="nombre" value="" placeholder="<?= $contacto->get_nombre()?>" required/>
+                        <input type="text" name="nombre" value="" placeholder="<?= $contacto->get_nombre()?>"/>
                         <label for="apellidos">Apellidos:</label>
-                        <input type="text" name="apellidos" value="" placeholder="<?= $contacto->get_apellidos()?>" required/>
+                        <input type="text" name="apellidos" value="" placeholder="<?= $contacto->get_apellidos()?>"/>
                         <label for="direccion">Dirección:</label>
-                        <input type="text" name="direccion" value="" placeholder="<?= $contacto->get_direccion()?>" required/>
+                        <input type="text" name="direccion" value="" placeholder="<?= $contacto->get_direccion()?>"/>
                         <label for="telefono">Teléfono:</label>
-                        <input type="tel" name="telefono" value="" placeholder="<?= $contacto->get_telefono()?>" required/>
+                        <input type="tel" name="telefono" value="" placeholder="<?= $contacto->get_telefono()?>"/>
                         <label for="email">Email:</label>
-                        <input type="email" name="email" value="" placeholder="<?= $contacto->get_email()?>" required/>
+                        <input type="email" name="email" value="" placeholder="<?= $contacto->get_email()?>"/>
                         <label for="imagen">Imagen:</label>
                         <input type="file" name="fichero" value="" />
+                        <input type="hidden" name="id" value="<?= $contacto->get_id()?>"/>
+                        <input type="hidden" name="imagen" value="<?= $contacto->get_imagen()?>"/>
 
                         <input class="boton" type="submit" name="enviar" value="Enviar" />
                     </fieldset>
