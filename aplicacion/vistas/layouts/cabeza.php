@@ -5,6 +5,11 @@
         <link rel="stylesheet" href="<?= URLCSS ?>/estilo.css" />
         <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyD-weRwtCPYdJPML1kkowgChFj6ec185Ck&sensor=true"
+		      type="text/javascript">
+        </script>
+        <script src="<?= URLJAVASCRIPT ?>/google.js" type="text/javascript">
+        </script>
         <title>Agenda de Contactos</title>
     </head>
     <body>

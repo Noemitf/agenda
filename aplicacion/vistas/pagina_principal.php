@@ -14,7 +14,7 @@
                     <?php for ($i=0;$i<=2;$i++){ ?>
                         <?php if (isset($contactos[$i])){?><!-- si existen posiciones en el array $contactos... -->
                         
-                        <li><?php $contactos[$i]?><img src="<?php URLIMAGENESDATOS?><?= $contactos[$i]->get_imagen() ?>" alt="Insertar Contacto"/><p><?= $contactos[$i]->get_nombre() ?></p></li>
+                        <li><a href="<?= URLAPLICACION."/index.php?accion=mostrar&id=".$contactos[$i]->get_id(); ?>"><img src="<?= URLIMAGENESDATOS."/".$contactos[$i]->get_imagen(); ?>" alt="Insertar Contacto"/></a><p><?= $contactos[$i]->get_nombre();?></p></li>
                         <?php } ?>
                     <?php } ?>
                 </ul>
@@ -23,7 +23,7 @@
                 <ul>
                     <?php for ($i=3;$i<=5;$i++){ ?>
                         <?php if (isset($contactos[$i])){?>
-                            <li><?php $contactos[$i]->get_id() ?><img src="<?php URLIMAGENESDATOS?><?= $contactos[$i]->get_imagen() ?>" alt="Insertar Contacto" /><p><?= $contactos[$i]->get_nombre() ?></p></li>
+                    <li><a href="<?= URLAPLICACION."/index.php?accion=mostrar&id=".$contactos[$i]->get_id(); ?>"><img src="<?= URLIMAGENESDATOS."/".$contactos[$i]->get_imagen() ?>" alt="Insertar Contacto" /></a><p><?= $contactos[$i]->get_nombre() ?></p></li>
                         <?php } ?>
                     <?php } ?>
                  

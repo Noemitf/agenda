@@ -23,34 +23,41 @@ class contacto{
     
     public function set_id($id){
         $this->id = $id;
+        return $this;
     }
     
     public function set_nombre($nombre){
         $this->nombre = $nombre;
+        return $this;
     }
     
     public function set_apellidos($apellidos){
         $this->apellidos = $apellidos;
+        return $this;
     }
     
     public function set_direccion($direccion){
         $this->direccion = $direccion;
+        return $this;
     }
     
     public function set_telefono($telefono){
         $this->telefono = $telefono;
+        return $this;
     }
     
     public function set_email($email){
         $this->email = $email;
+        return $this;
     }
     
     public function set_imagen($imagen){
         $this->imagen = $imagen;
+        return $this;
     }
     
-    public function set_contadorVisitas($contadorVisitas){
-        $this->contadorVisitas = $contadorVisitas;
+    public function set_contadorVisitas($contador_visitas){
+        $this->contador_visitas = $contador_visitas;
     }
     
     public function get_id(){
@@ -81,12 +88,12 @@ class contacto{
         return $this->imagen;
     }
     
-    public function get_contadorVisitas(){
-        return $this->contadorVisitas;
+    public function get_contador_visitas(){
+        return $this->contador_visitas;
     }
     
     public function incrementarContadorVisitas(){
-        $this->contadorVisitas++;
+        $this->contador_visitas++;
     }
 }
 

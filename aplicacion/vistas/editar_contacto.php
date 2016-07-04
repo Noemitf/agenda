@@ -15,15 +15,15 @@
                         <img src="<?= URLIMAGENESDATOS ?>/<?= $contacto->get_imagen()?>" alt="Foto <?= $contacto->get_nombre()?>" />
 
                         <label for="nombre">Nombre:</label>
-                        <input type="text" name="nombre" value="" placeholder="<?= $contacto->get_nombre()?>"/>
+                        <input type="text" name="nombre" value="<?= $contacto->get_nombre()?>" placeholder="Introduce nombre"/>
                         <label for="apellidos">Apellidos:</label>
-                        <input type="text" name="apellidos" value="" placeholder="<?= $contacto->get_apellidos()?>"/>
+                        <input type="text" name="apellidos" value="<?= $contacto->get_apellidos()?>" placeholder="Introduce apellidos"/>
                         <label for="direccion">Dirección:</label>
-                        <input type="text" name="direccion" value="" placeholder="<?= $contacto->get_direccion()?>"/>
+                        <input type="text" name="direccion" value="<?= $contacto->get_direccion()?>" placeholder="Introduce direccion"/>
                         <label for="telefono">Teléfono:</label>
-                        <input type="tel" name="telefono" value="" placeholder="<?= $contacto->get_telefono()?>"/>
+                        <input type="tel" name="telefono" value="<?= $contacto->get_telefono()?>" placeholder="Introduce telefono"/>
                         <label for="email">Email:</label>
-                        <input type="email" name="email" value="" placeholder="<?= $contacto->get_email()?>"/>
+                        <input type="email" name="email" value="<?= $contacto->get_email()?>" placeholder="Introduce email"/>
                         <label for="imagen">Imagen:</label>
                         <input type="file" name="fichero" value="" />
                         <input type="hidden" name="id" value="<?= $contacto->get_id()?>"/>

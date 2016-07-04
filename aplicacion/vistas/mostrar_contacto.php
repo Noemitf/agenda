@@ -8,10 +8,10 @@
                     Mostrar Contacto
                 </h2>
             </header>
-            <?php if (isset($contacto)){?>
+           
             <article id="contacto">
                 <header>
-                    <img src="<?= URLIMAGENESDATOS ?><?= $contacto->get_imagen()?>" alt="Foto" />
+                    <img src="<?= URLIMAGENESDATOS ?>/<?= $contacto->get_imagen()?>" alt="Foto" />
                 </header>
                 <ul>
                     <li><span>Nombre:</span><?= $contacto->get_nombre()?></li>
@@ -20,9 +20,10 @@
                     <li><span>Teléfono:</span><?= $contacto->get_telefono()?></li>
                     <li><span>Email:</span><?= $contacto->get_email()?></li>
                 </ul>
-                <img src="<?= URLIMAGENES ?>/mapa.jpg" src="mapa" />
+                <div id="mapa"> </div>
+                <script type="text/javascript"> load('<?= $contacto->get_direccion() ?>'); </script>
             </article>
-            <?php }?>
+         
         </section>
 
 <?php

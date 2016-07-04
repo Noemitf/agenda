@@ -73,7 +73,7 @@ class modeloContacto{
         mysql_close($conexion);
     }
     
-    public function insertarContacto(){
+    public function insertarContacto($contacto){
         $conexion = mysql_connect($this->get_servidor(),$this->get_usuario(),$this->get_clave(),$this->get_BaseDatos())
                 or die("No se pudo conectar a la base de datos");
         
@@ -89,12 +89,14 @@ class modeloContacto{
             or die("Consulta fallida ".  mysql_error());
         
         mysql_close($conexion);
+        
+        return $resultado;
 
         
     }
     
     public function borrarContacto($contacto){
-        $conexion = mysql_connect($this->get_servidor(),$this->get_usuario(),$this->get_clave(),$this->get_BaseDatos())
+        $conexion = mysql_connect($this->get_servidor(),$this->get_usuario(),$this->get_clave())
                 or die("No se pudo conectar a la base de datos");
         
         $baseDatos = mysql_select_db($this->get_BaseDatos(),$conexion)
@@ -106,10 +108,12 @@ class modeloContacto{
             or die("Consulta fallida ".  mysql_error());
         
         mysql_close($conexion);
+        
+        //return $resultado;
     }
     
-    public function actualizarContacto(){
-        $conexion = mysql_connect($this->get_servidor(),$this->get_usuario(),$this->get_clave(),$this->get_BaseDatos())
+    public function actualizarContacto($contacto){
+        $conexion = mysql_connect($this->get_servidor(),$this->get_usuario(),$this->get_clave())
                 or die("No se pudo conectar a la base de datos");
         
         $baseDatos = mysql_select_db($this->get_BaseDatos(),$conexion)
@@ -121,7 +125,7 @@ class modeloContacto{
             .'", telefono = "'.addslashes($contacto->get_telefono())
             .'", email = "'.addslashes($contacto->get_email())
             .'", imagen = "'.addslashes($contacto->get_imagen())
-            .'", contador_visitas ="'.addslashes($contacto->get_contadorVisitas())
+            .'", contador_visitas ="'.addslashes($contacto->get_contador_visitas())
         .'" WHERE id= '. $contacto->get_id();
         
         $resultado = mysql_query($consulta)

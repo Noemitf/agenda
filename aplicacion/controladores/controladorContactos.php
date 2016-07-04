@@ -53,10 +53,9 @@ class controladorContacto{
     
     public function insertarContactos(){
         $contacto = new contacto();
-        $contacto->set_id($_REQUEST['id']);
         $contacto->set_nombre($_REQUEST['nombre']);
         $contacto->set_apellidos($_REQUEST['apellidos']);
-        $contacto->set_direccion($REQUEST['direccion']);
+        $contacto->set_direccion($_REQUEST['direccion']);
         $contacto->set_telefono($_REQUEST['telefono']);
         $contacto->set_email($_REQUEST['email']);
         $contacto->set_imagen($this->uploadFoto());
@@ -77,7 +76,7 @@ class controladorContacto{
         if(!empty($_FILES['fichero']['name'])){
             // Borrar imagen
             if(strcmp($_REQUEST['imagen'], "foto.png")!=0)
-                unlink (IMAGENESDATOS."/".$_REQUEST['imagen']);
+                unlink(IMAGENESDATOS."/".$_REQUEST['imagen']);
             $contacto->set_imagen($this->uploadFoto());
         }else{
             $contacto->set_imagen($_REQUEST['imagen']);
@@ -91,11 +90,11 @@ class controladorContacto{
     public function borrarContactos(){
         $contacto = new contacto();
         $contacto->set_id($_REQUEST["id"]);
-        $contacto_buscar = $this->modelo->borrarContacto($contacto);//['contacto'] solo llama a un contacto
+        $contacto_buscar = $this->modelo->buscarContacto($contacto);//('contacto') solo llama a un contacto
         
         // Borrar imagen
         if(strcmp($contacto_buscar->get_imagen(), "foto.png")!=0)
-            unlink (IMAGENESDATOS."/".$contacto_buscar->get_imagen());
+            unlink(IMAGENESDATOS."/".$contacto_buscar->get_imagen());
         
         $this->modelo->borrarContacto($contacto);
         $datos['mensaje']="Contacto borrado";
