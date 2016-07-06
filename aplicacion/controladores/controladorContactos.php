@@ -4,9 +4,12 @@ require_once MODELOS.'/modeloContacto.php';
 
 class controladorContacto{
     private $modelo;
-    
+    private $sesion;
+
+
     public function __construct() {
         $this->modelo = new modeloContacto();
+        $this->sesion = new modeloUsuario();
     }
     
     private function llamarVista($vista,$datos){

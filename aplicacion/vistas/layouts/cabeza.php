@@ -15,14 +15,32 @@
     <body>
         <header>
                 <h1>Agenda de Contactos</h1>
+                <?php if (isset($usuario)): ?>
+                    <p id="usuario_login"><?= $usuario['nombre']; ?></p>
+                    <p><a href="<?= URLAPLICACION."/index.php?accion=salir" ?>">Cerrar Sesión</a></p>
+                <?php endif; ?>
         </header>
 
+        <?php if (isset($usuario)): ?>
         <nav>
             <ul>
                 <li><a href="<?= URLAPLICACION ?>"><img src="<?= URLIMAGENES ?>/home.png" alt="Inicio" /><span>Inicio</span></a></li>
                 <li><a href="<?= URLAPLICACION.'/index.php?accion=listar'?>"><img src="<?= URLIMAGENES ?>/list.png" alt="Listar Contacto" /><span>Listar Contactos</span></a></li>
+                <?php if ($usuario['rol'] == 'administrador'): ?>
                 <li><a href="<?= URLAPLICACION.'/index.php?accion=vistainsertar'?>"><img src="<?= URLIMAGENES ?>/add.png" alt="Insertar Contacto" /><span>Insertar Contactos</span></a></li>
+                <?php endif; ?>
             </ul>
         </nav>
+        
+        <?php if ($usuario['rol'] == 'administrador'): ?>
+                <nav>
+                    <ul>
+                        <li><a href="<?= URLAPLICACION."/index.php?accion=listarUsuarios"  ?>"><img src="<?= URLIMAGENES ?>/list.png" alt="Listar Usuarios" /><span>Listar Usuarios</span></a></li>
+                        <li><a href="<?= URLAPLICACION."/index.php?accion=vistaInsertarUsuario"  ?>"><img src="<?= URLIMAGENES ?>/add.png" alt="Insertar Usuario" /><span>Insertar Usuarios</span></a></li>
+                    </ul>
+                </nav>
+            <?php endif; ?>
+
+        <?php endif; ?>
 
 

@@ -157,7 +157,7 @@ class modeloContacto{
         
         mysql_close($conexion);
         
-        return $arrayContactos;
+        return (isset($arrayContactos) ? $arrayContactos : null);
     }
     
     public function buscarContacto($contacto){
