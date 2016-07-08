@@ -26,8 +26,10 @@
                             <td><img src="<?= URLIMAGENESDATOS ?>/<?= $contactos[$i]->get_imagen()?>" alt="Foto <?= $contactos[$i]->get_nombre()?>" /></td>
                             <td><?= $contactos[$i]->get_nombre()?></td>
                             <td><a href="<?= URLAPLICACION.'/index.php?accion=mostrar&id='.$contactos[$i]->get_id()?>"><img class="accion" src="<?= URLIMAGENES ?>/view.png" alt="Ver" /></a></td>
-                            <td><a href="<?= URLAPLICACION.'/index.php?accion=vistaeditar&id='.$contactos[$i]->get_id()?>"><img class="accion" src="<?= URLIMAGENES ?>/edit.png" alt="Editar" /></a></td>
-                            <td><a href="<?= URLAPLICACION.'/index.php?accion=borrar&id='.$contactos[$i]->get_id()?>"><img class="accion" src="<?= URLIMAGENES ?>/delete.png" alt="Borrar" /></a></td>
+                            <?php if ($usuario['rol'] == 'administrador'): ?>
+                                <td><a href="<?= URLAPLICACION.'/index.php?accion=vistaeditar&id='.$contactos[$i]->get_id()?>"><img class="accion" src="<?= URLIMAGENES ?>/edit.png" alt="Editar" /></a></td>
+                                <td><a href="<?= URLAPLICACION.'/index.php?accion=borrar&id='.$contactos[$i]->get_id()?>"><img class="accion" src="<?= URLIMAGENES ?>/delete.png" alt="Borrar" /></a></td>
+                            <?php endif; ?>
                         </tr>
                         <?php }?>
                         <?php }?>

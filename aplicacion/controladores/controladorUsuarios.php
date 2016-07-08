@@ -22,6 +22,7 @@ class controladorUsuarios{
     }
     
     public function formulario_insertar_usuario(){
+        $datos['usuario'] = $this->sesion->getSesion();
         $this->llamarVista('insertar_usuario', null);
     }
     
@@ -30,8 +31,9 @@ class controladorUsuarios{
         $usuario->setNombre($_REQUEST['nombre']);
         $usuario->setPassword($_REQUEST['password']);
         $usuario->setRol($_REQUEST['rol']);
-        $this->modelo->insertar_usuario($usuario);
+        $this->modelo->insertarUsuarioApp($usuario);
         $datos['mensaje']="Usuario creado";
+        $datos['usuario'] = $this->sesion->getSesion();
         $this->llamarVista('mostrar_mensajes', $datos);
     }
     
@@ -40,13 +42,15 @@ class controladorUsuarios{
         $usuario->setId($_REQUEST["id"]);
         $usuario_buscar = $this->modelo->buscarUsuarioApp($usuario);
         
-        $this->modelo->borrarUsuario($usuario);
-        $datos['mensaje']="Contacto borrado";
+        $this->modelo->borrarUsuarioApp($usuario);
+        $datos['mensaje']="Usuario borrado";
+        $datos['usuario'] = $this->sesion->getSesion();
         $this->llamarVista('mostrar_mensajes', $datos);
     }
     
     public function listar_usuarios(){
-        $datos['usuarios'] = $this->modelo->get_usuario();
+        $datos['usuarios'] = $this->modelo->getUsuarioApp();
+        $datos['usuario'] = $this->sesion->getSesion();
         $this->llamarVista('listar_usuarios', $datos);
     }
     

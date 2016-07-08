@@ -21,6 +21,42 @@ header  h1 {
     text-align: center;
 }
 
+header > p {
+    float: right;
+    position: absolute;
+    top: 52px;
+    left: 80%;
+    width: 10%;
+    padding: 2px;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+}
+
+header > p > a {
+    text-decoration:none;
+    color: white;
+    background-color: black;
+}
+
+header > p > a:hover {
+    color: red;
+}
+
+header > #usuario_login {
+    background-color: cornflowerblue;
+    color:white;
+    position: absolute;
+    top: 20px;
+    left: 80%;
+    right: 145px;
+    width: 10%;
+    border-radius: 5%;
+}
+
 nav {
     width: 80%;
     padding: 8px 0px;
@@ -69,6 +105,14 @@ nav > ul > li > a > span {
     font-size: .9em;
 }
 
+.papelera {
+    width: 20%;
+}
+
+.papelera:hover {
+    width: 20%;
+}
+
 section {
     width: 80%;
     margin: 5px auto;
@@ -104,6 +148,11 @@ section > article > ul > li {
     height: 80%;
     margin: 0px 1%;
     display: inline-block;
+    
+}
+
+.listar{
+    margin-bottom: 3em;
 }
 
 section > article > ul > li > a > img {
@@ -197,6 +246,20 @@ section > article > form > fieldset > input {
     border: 1px dotted black;
 }
 
+section > article > form > fieldset > select {
+    width: 40%;
+    display: block;
+    float: left;
+    text-align: left;
+    clear: right;
+    margin-left: 2%;
+    margin-top: 2%;
+    padding: 5px;
+    font-size: .9em;
+    border: 1px dotted black;
+}
+
+
 section > article > form > fieldset > img {
     display: block;
     width: 20%;
@@ -207,7 +270,7 @@ section > article > form > fieldset > img {
 
 
 .boton {
-    width: 10%;
+    width: 15%;
     text-align: center;
     border-radius: 5px;
     float: right;
@@ -221,7 +284,7 @@ section > article > form > fieldset > img {
 }
 
 .accion {
-    width: 15%;
+    width: 20px;
     display: block;
     margin: 0px auto;
     padding: 2px;

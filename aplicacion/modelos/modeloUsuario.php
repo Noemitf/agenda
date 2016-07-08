@@ -95,7 +95,7 @@ class modeloUsuario{
         
         while ($datos=mysql_fetch_array($resultado,MYSQL_ASSOC))
         {
-            $usuario = ['nombre','password','rol','id'];
+            $usuario = new Usuario ( $datos['nombre'], $datos['password'],$datos['rol'],$datos['id']);
             $arrayUsuarios[] = $usuario;
             unset ($usuario);
         
@@ -133,11 +133,15 @@ class modeloUsuario{
         $baseDatos = mysql_select_db($this->getBaseDatos(),$conexion)
             or die ("No se pudo conectar la base de datos");
         
-        $consulta = 'SELECT * FROM usuario WHERE nombre='.$usuario->getNombre();
+        $consulta = 'SELECT * FROM usuario WHERE nombre="'.$usuario->getNombre().'" and password="'.$usuario->getPassword().'"';
         
+       
         $resultado = mysql_query($consulta) or die ("Consulta fallida5: ".mysql_error());
+      
+        $usuario_resultado = null;
         
         if($datos=mysql_fetch_array($resultado, MYSQL_ASSOC)){
+           
             $usuario_resultado = new Usuario($datos['nombre'],$datos['password'],$datos['rol'],$datos['id']);
         }
         

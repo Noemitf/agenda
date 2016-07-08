@@ -10,10 +10,11 @@
     </header>
 
     <article>
-        <?php if (isset($usuarios)): ?>
+        <?php
+        if (isset($usuarios)): ?>
             <ul>
                 <?php foreach ($usuarios as $usuario): ?>
-                    <li><a href="<?= URLAPLICACION."/index.php?accion=borrarUsuario&id=".$usuario->getId(); ?>"><img class="papelera" src="<?= URLIMAGENES ?>/delete.png" alt="Borrar" /></a><p><?= $usuario->getNombre() ?></p><p><?= $usuario->getRol(); ?></p></li>
+                <li class="listar"><a href="<?= URLAPLICACION."/index.php?accion=borrarUsuario&id=".$usuario->getId(); ?>"><img class="papelera" src="<?= URLIMAGENES ?>/delete.png" alt="Borrar" /></a><p><?= $usuario->getNombre() ?></p><p class="rol"><?= $usuario->getRol(); ?></p></li>
                 <?php endforeach; ?>
             </ul>
         <?php else: ?>

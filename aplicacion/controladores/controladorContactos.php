@@ -7,9 +7,9 @@ class controladorContacto{
     private $sesion;
 
 
-    public function __construct() {
+    public function __construct($sesion) {
         $this->modelo = new modeloContacto();
-        $this->sesion = new modeloUsuario();
+        $this->sesion = $sesion;
     }
     
     private function llamarVista($vista,$datos){
@@ -38,11 +38,12 @@ class controladorContacto{
     public function paginaPrincipal(){
         //obtener los contactos, meterlos en una variable datos que es un array y la clave valor es contactos
         $datos['contactos'] = $this->modelo->get_contacto();//['contactos'] dentro tiene un array con todos los contactos
+        $datos['usuario'] = $this->sesion->getSesion();
         $this->llamarVista('pagina_principal', $datos);
     }
     
     public function formularioInsertarContacto(){
-        
+        $datos['usuario'] = $this->sesion->getSesion();
         $this->llamarVista('insertar_contacto', null);
     }
     
@@ -51,6 +52,7 @@ class controladorContacto{
         $contacto->set_id($_REQUEST["id"]);
         $contacto_buscar = $this->modelo->buscarContacto($contacto);
         $datos['contacto'] = $contacto_buscar;//['contacto'] solo llama a un contacto
+        $datos['usuario'] = $this->sesion->getSesion();
         $this->llamarVista('editar_contacto', $datos);
     }
     
@@ -64,6 +66,7 @@ class controladorContacto{
         $contacto->set_imagen($this->uploadFoto());
         $this->modelo->insertarContacto($contacto);
         $datos['mensaje']="Contacto insertado";
+        $datos['usuario'] = $this->sesion->getSesion();
         $this->llamarVista('mostrar_mensajes', $datos);
     }
 
@@ -87,6 +90,7 @@ class controladorContacto{
         
         $this->modelo->actualizarContacto($contacto);
         $datos['mensaje'] = "Contacto actualizado correctamente";
+        $datos['usuario'] = $this->sesion->getSesion();
         $this->llamarVista('mostrar_mensajes', $datos);
     }
     
@@ -101,11 +105,13 @@ class controladorContacto{
         
         $this->modelo->borrarContacto($contacto);
         $datos['mensaje']="Contacto borrado";
+        $datos['usuario'] = $this->sesion->getSesion();
         $this->llamarVista('mostrar_mensajes', $datos);
     }
     
     public function listarContactos(){
         $datos['contactos'] = $this->modelo->get_contacto();//['contactos'] dentro tiene un array con todos los contactos
+        $datos['usuario'] = $this->sesion->getSesion();
         $this->llamarVista('listar_contactos', $datos);
     }
     
@@ -116,6 +122,7 @@ class controladorContacto{
         $contacto_buscar->incrementarContadorVisitas();
         $this->modelo->actualizarContacto($contacto_buscar);
         $datos['contacto'] = $contacto_buscar;
+        $datos['usuario'] = $this->sesion->getSesion();
         $this->llamarVista('mostrar_contacto', $datos);
     }
 }

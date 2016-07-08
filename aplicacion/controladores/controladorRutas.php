@@ -9,8 +9,8 @@ class controladorRutas{
     private $controladorUsuarios;
     
     public function __construct() {
-        $this->controlador = new controladorContacto();
-        $this->controladorSesiones = new controladorSesiones($this->controladorSesiones);
+        $this->controladorSesiones = new controladorSesiones();
+        $this->controladorContactos = new controladorContacto($this->controladorSesiones);
         $this->controladorUsuarios = new ControladorUsuarios($this->controladorSesiones);
     }
     
@@ -19,48 +19,48 @@ class controladorRutas{
             
             switch ($_REQUEST['accion']){
                 case 'principal':
-                    $this->controladorContactos->pagina_principal();
+                    $this->controladorContactos->paginaPrincipal();
                     break;
                 case 'login':
                     if ($this->controladorSesiones->estasLogueado()){
-                        $this->controladorContactos->pagina_principal();
+                        $this->controladorContactos->paginaPrincipal();
                     }
                     else{
                         $this->controladorSesiones->login();
                     }
                     break;
                 case 'insertar':
-                    $this->controlador->insertarContactos();
+                    $this->controladorContactos->insertarContactos();
                     break;
                 case 'vistainsertar':
-                    $this->controlador->formularioInsertarContacto();
+                    $this->controladorContactos->formularioInsertarContacto();
                     break;
                 case 'editar':
-                    $this->controlador->editarContactos();
+                    $this->controladorContactos->editarContactos();
                     break;
                 case 'vistaeditar':
-                    $this->controlador->formularioEditarContacto();
+                    $this->controladorContactos->formularioEditarContacto();
                     break;
                 case 'borrar':
-                    $this->controlador->borrarContactos();
+                    $this->controladorContactos->borrarContactos();
                     break;
                 case 'listar':
-                    $this->controlador->listarContactos();
+                    $this->controladorContactos->listarContactos();
                     break;
                 case 'mostrar':
-                    $this->controlador->mostrarContactos();
+                    $this->controladorContactos->mostrarContactos();
                     break;
                 case 'listarUsuarios':
                     $this->controladorUsuarios->listar_usuarios();
                     break;
                 case 'vistaInsertarUsuario':
-                    $this->controladorUsuarios->insertar_usuarios();
+                    $this->controladorUsuarios->formulario_insertar_usuario();
                     break;
                 case 'insertarUsuario':
-                    $this->controladorUsuarios->insertar_usuario();
+                    $this->controladorUsuarios->insertar_usuarios();
                     break;
                 case 'borrarUsuario':
-                    $this->controladorUsuarios->borrar_usuario();
+                    $this->controladorUsuarios->borrar_usuarios();
                     break;
                 case 'salir':
                     $this->controladorSesiones->salir();

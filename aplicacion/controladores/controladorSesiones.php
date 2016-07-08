@@ -32,6 +32,7 @@ class controladorSesiones{
     
     public function login(){
         //llama a la vista login con null
+        //$datos['usuario'] = $this->sesion->getSesion();
         $this->llamarVista('login',null);
     }
     
@@ -42,13 +43,16 @@ class controladorSesiones{
         $usuario = new Usuario();
         $usuario->setNombre($_REQUEST['nombre']);
         $usuario->setPassword($_REQUEST['password']);
-        $this->modelo->buscarUsuarioAppPorNombre($usuario);
-        if (!isset($_SESSION['usuario'])){
-             session_start ($nombre,$rol);
-             return $usuario=TRUE;
+        $this->usuario = $this->modelo->buscarUsuarioAppPorNombre($usuario);
+        if ($this->usuario){
+             session_start();
+             $_SESSION['usuario']['nombre']=  $this->usuario->getNombre();
+             $_SESSION['usuario']['rol']=  $this->usuario->getRol();
+             return true;
         }
-        else if($usuario=NULL){
-            return $usuario=FALSE;
+        else {
+        $this->usuario = null;
+            return false;
         }
     }
     
