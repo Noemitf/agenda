@@ -26,7 +26,7 @@ class controladorRutas{
                         $this->controladorContactos->paginaPrincipal();
                     }
                     else{
-                        $this->controladorSesiones->login();
+                        $this->controladorSesiones->login(false);
                     }
                     break;
                 case 'insertar':
@@ -64,12 +64,12 @@ class controladorRutas{
                     break;
                 case 'salir':
                     $this->controladorSesiones->salir();
-                    $this->controladorSesiones->login();
+                    $this->controladorSesiones->login(true);
                     break;
         }//cierra el switch
     }//cierra if isset
     else{
-            $this->controladorSesiones->login();
+            $this->controladorSesiones->login(true);
         }
 }//cierra gestionarRuta
 }//cierra la clase

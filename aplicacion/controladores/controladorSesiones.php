@@ -30,10 +30,16 @@ class controladorSesiones{
         return $this;
     }
     
-    public function login(){
+    public function login($exito){
         //llama a la vista login con null
         //$datos['usuario'] = $this->sesion->getSesion();
-        $this->llamarVista('login',null);
+        
+        if (!$exito) {//si no se entra con exito en la sesion...
+            $datos['mensaje'] = "LOGIN INCORRECTO";
+        }
+        else $datos = null;
+        
+        $this->llamarVista('login',$datos);
     }
     
     public function estasLogueado(){

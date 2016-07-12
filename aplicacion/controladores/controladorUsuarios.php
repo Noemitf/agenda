@@ -42,9 +42,14 @@ class controladorUsuarios{
         $usuario->setId($_REQUEST["id"]);
         $usuario_buscar = $this->modelo->buscarUsuarioApp($usuario);
         
-        $this->modelo->borrarUsuarioApp($usuario);
-        $datos['mensaje']="Usuario borrado";
-        $datos['usuario'] = $this->sesion->getSesion();
+        if(strcmp($datos['usuario']['nombre'], $usuario_buscar->getNombre())!=0){
+            $this->modelo->borrarUsuarioApp($usuario);
+            $datos['mensaje']="Usuario borrado";
+        }
+        else{
+            $datos['mensaje']="No se puede borrar el propio usuario";
+        }
+        //$datos['usuario'] = $this->sesion->getSesion();
         $this->llamarVista('mostrar_mensajes', $datos);
     }
     

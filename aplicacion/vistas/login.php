@@ -9,6 +9,11 @@
     </header>
 
     <article>
+        <?php if (isset($mensaje)): ?>
+        
+            <p><?= $mensaje ?></p>
+        <?php endif; ?>
+        
         <form action="<?= URLAPLICACION.'/index.php?accion=login' ?>" method="post">
             <fieldset>
                 <label for="nombre">Nombre: </label>
